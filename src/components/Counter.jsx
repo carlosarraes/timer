@@ -64,7 +64,7 @@ class Counter extends Component {
             <p>tempo tem q ser exatamente como o exemplo:  3m 15s</p>
           </>:
           <>
-            <h1 className='text-4xl font-bold'>{`${tempo}s`}</h1>
+            <h1 className='text-8xl font-bold'>{`${tempo}s`}</h1>
             {tempo === 0 && <span className='text-xl font-bold my-3'>É HEXA!</span>}
           </>}
       </>
