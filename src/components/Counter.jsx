@@ -4,16 +4,12 @@ import { AiFillPauseCircle, AiFillPlayCircle } from 'react-icons/ai'
 const SECOND = 1000;
 
 class Counter extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      tempo: 0,
-      segundos: 0,
-      minutos: 0,
-      error: false,
-      start: true,
-    }
+  state = {
+    tempo: 0,
+    segundos: 0,
+    minutos: 0,
+    error: false,
+    start: true,
   }
 
   callTimer = () => {
@@ -65,13 +61,9 @@ class Counter extends Component {
 
   componentDidUpdate() {
     const { tempo, segundos, minutos, start } = this.state;
-    if ( tempo === 0 ) {
-      clearInterval(this.intervalId);
-    }
+    if ( tempo === 0 ) clearInterval(this.intervalId);
 
-    if ( segundos === 0 && minutos && start) {
-      this.setState((prevState) => ({...prevState, minutos: prevState.minutos - 1, segundos: 60}))
-    }
+    if ( segundos === 0 && minutos && start) this.setState((prevState) => ({...prevState, minutos: prevState.minutos - 1, segundos: 60}))
   }
 
   render() {
@@ -79,20 +71,24 @@ class Counter extends Component {
 
     return (
       <>
-        { error ?
-          <section> 
-            <h1>Error, tente novamente.</h1> 
-            <p>tempo tem q ser exatamente como o exemplo:  3m 15s</p>
-          </section>:
-          <section className='flex flex-col justify-center items-center gap-2'>
-            <div className='flex justify-between items-center gap-6'>
-              <h1 className='text-8xl font-bold'>{`${minutos.toString().padStart(2, "0")}:${segundos.toString().padStart(2, "0")}`}</h1>
-              { start ?
-              <AiFillPauseCircle className='cursor-pointer text-2xl' onClick={this.pauseTimer} />
-              : <AiFillPlayCircle className='cursor-pointer text-2xl' onClick={this.restartTimer} /> }
-            </div>
-            {tempo === 0 && <span className='text-xl font-bold my-3'>É HEXA!</span>}
-          </section>}
+        { error ? (
+            <section> 
+              <h1>Error, tente novamente.</h1> 
+              <p>tempo tem q ser exatamente como o exemplo:  3m 15s</p>
+            </section>
+          ) : (
+            <section className='flex flex-col justify-center items-center gap-2'>
+              <div className='flex justify-between items-center gap-6'>
+                <h1 className='text-8xl font-bold'>{`${minutos.toString().padStart(2, "0")}:${segundos.toString().padStart(2, "0")}`}</h1>
+                { start ? (
+                  <AiFillPauseCircle className='cursor-pointer text-2xl' onClick={this.pauseTimer} />
+                ) : (
+                  <AiFillPlayCircle className='cursor-pointer text-2xl' onClick={this.restartTimer} />
+                )}
+              </div>
+              {tempo === 0 && <span className='text-xl font-bold my-3'>É HEXA!</span>}
+            </section>
+          )}
       </>
     )
   }

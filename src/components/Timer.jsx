@@ -3,7 +3,7 @@ import Counter from './Counter';
 
 class Timer extends Component {
   state = {
-    tempo: 0,
+    tempo: '',
     timer: false,
   }
 
@@ -26,7 +26,7 @@ class Timer extends Component {
           {timer ? (
             <Counter tempo={tempo} />
           ) : 
-          <>
+          (<>
             <label htmlFor="tempo" className='my-2 text-xl'>Insira o tempo (Ex.: 1m 30s)</label>
             <input
               type="text"
@@ -34,9 +34,10 @@ class Timer extends Component {
               id="tempo"
               className='rounded-md w-full text-black text-center focus:ring-0'
               value={tempo}
+              placeholder="2m 45s"
               onChange={this.handleChange}
             />
-          </>}
+          </>)}
         </section>
         <section className='mt-4 flex justify-between gap-2'>
           <button
