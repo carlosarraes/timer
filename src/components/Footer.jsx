@@ -26,7 +26,7 @@ class Footer extends Component {
           </a>
         </div>
         <div>
-          <a href="https://carlosarraes.github.io/timer" target="_blank">
+          <a href="https://github.com/carlosarraes/timer/" target="_blank">
             <button
               className="space-x-1 border p-2 rounded-r-md opacity-80 bg-gray-50 hover:opacity-100 duration-200"
             >
